@@ -11,9 +11,10 @@ datasource db {
 }
 
 model Users {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  password String
+  id        Int         @id @default(autoincrement())
+  email     String      @unique
+  password  String
+  Addresses Addresses[]
 
   @@map("users")
 }
@@ -22,6 +23,8 @@ model Categories {
   id       Int        @id @default(autoincrement())
   name     String     @unique
   Products Products[]
+
+  @@map("categories")
 }
 
 model Products {
@@ -33,4 +36,45 @@ model Products {
   price       Int
 
   @@map("products")
+}
+
+model Addresses {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  user        Users     @relation(fields: [userId], references: [id])
+  street      String
+  houseNumber Int
+  districtId  Int
+  district    Districts @relation(fields: [districtId], references: [id])
+
+  @@map("addresses")
+}
+
+model States {
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  Cities Cities[]
+
+  @@map("states")
+}
+
+model Cities {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
+  stateId   Int
+  state     States      @relation(fields: [stateId], references: [id])
+  Districts Districts[]
+
+  @@map("cities")
+}
+
+model Districts {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
+  cityId    Int
+  city      Cities      @relation(fields: [cityId], references: [id])
+  Addresses Addresses[]
+  Shipping  Shipping?
+
+  @@map("districts")
 }
