@@ -14,8 +14,8 @@ export async function getUserByEmail(userEmail: string): Promise<TUser>{
   return user;
 }
 
-// export async function findById(id: number) {
-//   return prisma.users.findUnique({
-//     where: { id }
-//   });
-// }
+export async function findById(id: number) {
+  return prisma.users.findUnique({
+    where: { id }
+  });
+}
