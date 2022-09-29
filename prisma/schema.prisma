@@ -18,3 +18,19 @@ model Users {
   @@map("users")
 }
 
+model Categories {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  Products Products[]
+}
+
+model Products {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
+  description String
+  categoryId  Int
+  category    Categories @relation(fields: [categoryId], references: [id])
+  price       Int
+
+  @@map("products")
+}
