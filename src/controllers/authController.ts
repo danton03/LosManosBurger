@@ -12,7 +12,3 @@ export async function login(req: Request, res: Response) {
   const token = await loginService(authData);
   res.status(200).send({token});
 }
-
-/* export async function get(req: Request, res: Response) {
-  // TODO
-} */
