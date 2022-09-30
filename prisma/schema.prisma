@@ -32,6 +32,7 @@ model Products {
   id          Int        @id @default(autoincrement())
   name        String     @unique
   description String
+  imageUrl    String
   categoryId  Int
   category    Categories @relation(fields: [categoryId], references: [id])
   price       Int
