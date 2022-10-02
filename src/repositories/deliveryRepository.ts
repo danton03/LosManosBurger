@@ -9,7 +9,7 @@ async function getDeliveryLocations() {
 				select: {
 					id: true,
 					name: true,
-					shipping: {
+					delivery: {
 						select: {
 							price: true
 						}

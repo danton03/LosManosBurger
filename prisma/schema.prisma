@@ -23,7 +23,7 @@ model Users {
 model Categories {
   id       Int        @id @default(autoincrement())
   name     String     @unique
-  products Products []
+  products Products[]
 
   @@map("categories")
 }
@@ -76,16 +76,16 @@ model Districts {
   cityId    Int
   city      Cities      @relation(fields: [cityId], references: [id])
   addresses Addresses[]
-  shipping  Shipping?
+  delivery  Delivery?
 
   @@map("districts")
 }
 
-model Shipping {
+model Delivery {
   id         Int       @id @default(autoincrement())
   districtId Int       @unique
   district   Districts @relation(fields: [districtId], references: [id])
   price      Int
 
-  @@map("shipping")
+  @@map("delivery")
 }
