@@ -5,11 +5,11 @@ async function getDeliveryLocations() {
 	const districts = await prisma.cities.findMany({
 		where: {},
 		include: {
-			districts: {
+			Districts: {
 				select: {
 					id: true,
 					name: true,
-					delivery: {
+					Delivery: {
 						select: {
 							price: true
 						}
