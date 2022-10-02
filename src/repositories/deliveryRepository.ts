@@ -54,7 +54,7 @@ async function getDeliveryLocationsAndUserAddresses(userId: number) {
 
 	const deliveryLocationsWithUserAddresses = {
 		userAddresses,
-		...deliveryLocations
+		deliveryLocations
 	};
 
 	return deliveryLocationsWithUserAddresses;
