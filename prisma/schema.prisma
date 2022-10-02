@@ -15,7 +15,7 @@ model Users {
   name      String
   email     String      @unique
   password  String
-  Addresses Addresses[]
+  addresses Addresses[]
 
   @@map("users")
 }
@@ -23,7 +23,7 @@ model Users {
 model Categories {
   id       Int        @id @default(autoincrement())
   name     String     @unique
-  Products Products[]
+  products Products []
 
   @@map("categories")
 }
@@ -55,7 +55,7 @@ model Addresses {
 model States {
   id     Int      @id @default(autoincrement())
   name   String   @unique
-  Cities Cities[]
+  cities Cities[]
 
   @@map("states")
 }
@@ -65,7 +65,7 @@ model Cities {
   name      String      @unique
   stateId   Int
   state     States      @relation(fields: [stateId], references: [id])
-  Districts Districts[]
+  districts Districts[]
 
   @@map("cities")
 }
@@ -75,8 +75,8 @@ model Districts {
   name      String      @unique
   cityId    Int
   city      Cities      @relation(fields: [cityId], references: [id])
-  Addresses Addresses[]
-  Shipping  Shipping?
+  addresses Addresses[]
+  shipping  Shipping?
 
   @@map("districts")
 }
