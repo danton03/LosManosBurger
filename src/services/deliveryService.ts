@@ -5,6 +5,12 @@ async function getDeliveryLocations() {
 	return deliveryLocations;
 }
 
+async function getDeliveryLocationsAndUserAddresses(userId: number) {
+	const deliveryLocations = await deliveryRepository.getDeliveryLocationsAndUserAddresses(userId);
+	return deliveryLocations;
+}
+
 export const deliveryService = {
-	getDeliveryLocations
+	getDeliveryLocations,
+	getDeliveryLocationsAndUserAddresses
 };
