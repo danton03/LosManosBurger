@@ -1,9 +1,11 @@
-import { Router } from 'express';
-import { ensureAuthenticatedMiddleware } from '../middlewares/authMiddleware';
-import authRouter from './authRouter';
+import { Router } from "express";
+import authRouter from "./authRouter";
+import deliveryRouter from "./deliveryRouter";
+import productsRouter from "./productsRouter";
 
 const router = Router();
 router.use(authRouter);
-router.use(ensureAuthenticatedMiddleware);
+router.use(productsRouter);
+router.use(deliveryRouter);
 
 export default router;
