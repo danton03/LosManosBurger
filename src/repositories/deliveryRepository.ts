@@ -49,7 +49,7 @@ async function getDeliveryLocationsAndUserAddresses(userId: number) {
 		ON cities.id = districts."cityId"
 		JOIN states
 		ON states.id = cities."stateId"
-		WHERE addresses.id = ${userId};
+		WHERE addresses."userId" = ${userId};
 	`;
 
 	const deliveryLocationsWithUserAddresses = {
