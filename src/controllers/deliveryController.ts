@@ -6,6 +6,12 @@ export async function getAllDeliveryLocations(req: Request, res: Response) {
 	res.status(200).send(deliveryLocations);
 }
 
+export async function getDeliveryLocationsAndUserAddresses (req: Request, res: Response) {
+	const { user } = res.locals;
+	const deliveryLocations = await deliveryService.getDeliveryLocationsAndUserAddresses(user.id);
+	res.status(200).send(deliveryLocations);
+}
+
 /* export async function get(req: Request, res: Response) {
   // TODO
 } */

@@ -61,11 +61,11 @@ model States {
 }
 
 model Cities {
-  id        Int         @id @default(autoincrement())
-  name      String      @unique
-  stateId   Int
-  state     States      @relation(fields: [stateId], references: [id])
-  Districts Districts[]
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
+  stateId     Int
+  state       States      @relation(fields: [stateId], references: [id])
+  Districts   Districts[]
 
   @@map("cities")
 }
