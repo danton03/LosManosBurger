@@ -15,7 +15,7 @@ export async function loginService(authData: TCreateUser) {
 	// 2 - Verificar se a senha dele esta correta
 	const { password } = authData;
 	const encyptedPassword = user.password;
-	validatePassword(password, encyptedPassword);
+	await validatePassword(password, encyptedPassword);
 
 	// 3 - Gerar token JWT
 	const token = await generateToken(user.id);
