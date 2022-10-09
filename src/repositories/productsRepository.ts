@@ -2,13 +2,23 @@ import { prisma } from "../config/database";
 
 
 async function getProducts() {
-	const products = await prisma.$queryRaw`
-    SELECT products.id, products.name, products.description,  products."imageUrl", category.name as category, price 
-    FROM products
-    JOIN categories category
-    ON "categoryId" = category.id
-    ORDER BY category.id
-  `;
+	const hamburgers = await prisma.products.findMany({
+		where: {categoryId: 1}
+	});
+	const drinks = await prisma.products.findMany({
+		where: {categoryId: 2}
+	});
+	const additional = await prisma.products.findMany({
+		where: {categoryId: 3}
+	});
+
+	const products = {
+		hamburgers: hamburgers,
+		drinks,
+		additional
+	};
+	return products;
+}
 	return products;
 }
 
