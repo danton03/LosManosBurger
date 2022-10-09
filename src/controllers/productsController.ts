@@ -6,6 +6,8 @@ export async function getProducts(req: Request, res: Response) {
 	res.status(200).send(products);
 }
 
-/* export async function get(req: Request, res: Response) {
-  // TODO
-} */
+export async function getProductById(req: Request, res: Response) {
+	const { productId } = req.params;
+	const product = await productsService.getProductById(Number(productId));
+	res.status(200).send(product);
+}

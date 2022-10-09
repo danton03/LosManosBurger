@@ -19,9 +19,15 @@ async function getProducts() {
 	};
 	return products;
 }
+
+async function getById(id: number) {
+	const products = await prisma.products.findMany({
+		where: {id}
+	});
 	return products;
 }
 
 export const productsRepository = {
-	getProducts
+	getProducts, 
+	getById
 };
