@@ -13,9 +13,9 @@ async function getProducts() {
 	});
 
 	const products = {
-		hamburgers: hamburgers,
-		drinks,
-		additional
+		Hambúrgueres: hamburgers,
+		Bebidas: drinks,
+		Adicionais: additional
 	};
 	return products;
 }
