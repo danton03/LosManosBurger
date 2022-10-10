@@ -21,10 +21,14 @@ async function getProducts() {
 }
 
 async function getById(id: number) {
-	const products = await prisma.products.findUnique({
-		where: {id}
-	});
-	return products;
+	const products = await prisma.$queryRaw`
+		SELECT product.id, product.name, product.description, product."imageUrl", product.price, category.name AS category
+		FROM products product
+		JOIN categories category
+		ON category.id = "categoryId"
+		WHERE product.id = ${id}
+	`;
+	return products[0];
 }
 
 export const productsRepository = {
