@@ -21,7 +21,7 @@ async function getProducts() {
 }
 
 async function getById(id: number) {
-	const products = await prisma.products.findMany({
+	const products = await prisma.products.findUnique({
 		where: {id}
 	});
 	return products;
